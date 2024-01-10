@@ -1,0 +1,42 @@
+.table {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   border: 3px solid grey;
+   margin: 0rem auto;
+   width: max-content;
+  
+
+   & tr {
+      width: 100%;
+      
+      & th {
+         padding: 1rem;
+         background-color: lightslategray;
+         color: aliceblue;
+
+         & a {
+            color: #FFF;
+         }
+         & a:hover {
+            color: blue;
+         }
+      }
+      
+      & td {
+         font-size: 1.1rem;
+         border:  1px solid lightslategray;
+         border-radius:  0.1875rem;
+
+         & a {
+            color: rgb(34, 140, 246);
+         }
+         & a:hover {
+            color: blue;
+         }
+         
+      }
+
+   }
+}
