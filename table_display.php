@@ -28,18 +28,18 @@ function tableDisplay()
    $student_query_array = $student_query->fetch_all(MYSQLI_ASSOC);
 
 
-   
+
    // HTML Table
    if (count($student_query_array) > 0) {
       $HTML_OutPut = "<table class='table'>";
-      
+
       //Table Head
       $HTML_OutPut .= "<tr>";
       $student_table_fields = $student_query->fetch_fields();
       foreach ($student_table_fields as $field) {
          $HTML_OutPut .= "<th><a href='table.php?sort=" . $field->name . "'>" . ucfirst($field->name) . "</a></th>";
       }
-      
+
       // Table Sort
       $sort_query = isset($_GET['sort']) ? $_GET['sort'] : null;
       if ($sort_query) {
@@ -47,25 +47,27 @@ function tableDisplay()
          $student_query = $mysql->query($student_table_query);
          $student_query_array = $student_query->fetch_all(MYSQLI_ASSOC);
       }
+      $HTML_OutPut .= "</tr>";
    }
-   
+
    // Table Row and data
-   $HTML_OutPut .= "</tr>";
    $student_query->data_seek(0);
+ 
    while ($row = $student_query->fetch_row()) {
       $HTML_OutPut .= "<tr>";
       foreach ($row as $record) {
          $HTML_OutPut .= "<td>" . ucfirst($record) . "</td>";
       }
-      
+      // $_SESSION['id']  = $row['id'];
+      // var_dump($_SESSION['id']);
       //Links to delete and update
-      $HTML_OutPut .= "<td><a href='delete_record.php?id='" . $row['id'] . "'>Delete</a></td>";
-      $HTML_OutPut .= "<td><a href='update_record.php?id='" . $row['id'] . "'>Update</a></td>";
+      $HTML_OutPut .= "<td><a href='delete_record.php?id=" . $row[0] . "'>Delete</a></td>";
+      $HTML_OutPut .= "<td><a href='update_record.php?id=" . $row[0] . "'>Update</a></td>";
       $HTML_OutPut .= "<tr>";
    }
 
    $HTML_OutPut .= "</table>";
 
    return $HTML_OutPut;
-
 }
+?>

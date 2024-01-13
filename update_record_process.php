@@ -3,7 +3,12 @@ session_start();
 require_once 'dbinfo.php';
 
 $message = array();
-if (isset($_POST['remove_record']) && !empty($_POST['remove_record'])) { // Chek if the radio button was clicked
+if (isset($_POST['studentID']) && isset($_POST['firstname']) && isset($_POST['lastname'])) {
+
+   if (!empty($_POST['studentID']) || !empty($_POST['firstname']) || !empty($_POST['lastname'])) { // Check if the radio button was clicked
+
+   }
+   // check if the post are set and then query the database to update it****************************************
 
    // get the Student ID parameter from the getRecordInfo() //delete_record_process.php
    if (isset($_SESSION['studentID'])) {
@@ -35,12 +40,12 @@ if (isset($_POST['remove_record']) && !empty($_POST['remove_record'])) { // Chek
          if ($delQuery->affected_rows > 0) { // Check if record was deleted
             $message[] =  "<p>Student record with the ID:" . $student_id . " was deleted from the Database</p>"; // deleted message
          } else {
-            $message[] = "<p>No Student Record was deleted</p>"; 
+            $message[] = "<p>No Student Record was deleted</p>";
          }
       } else { // Value: No Block
          $message[] = "<p>No Student Record was deleted</p>";
       }
-   }else{
+   } else {
       $message[] = "<p>No Student Record was Found</p>"; // No Student ID
    }
 } else {

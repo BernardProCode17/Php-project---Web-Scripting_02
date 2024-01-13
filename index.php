@@ -19,13 +19,13 @@ require_once 'variables.php';
    <header>
       <h1><?php echo FIRSTNAME . ' ' . LASTNAME ?></h1>
       <p><?php echo 'PHP Site' ?></p>
-      <nav>
+      <!-- <nav>
          <ul>
             <li><a href="index.php">Home</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="#">About</a></li>
          </ul>
-      </nav>
+      </nav> -->
    </header>
 
    <main>

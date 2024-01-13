@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once 'variables.php';
-require_once 'delete_record_process.php';
+require_once 'get_record_info.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,12 +46,13 @@ require_once 'delete_record_process.php';
          ?>
       </div>
 
-      <form action="table.php" method="post">
+      <form action="delete_record_process.php" method="post">
 
          <fieldset>
             <h3>Are you sure you want to remove this record </h3>
 
-            <?php echo remove_record() ?>
+            <?php echo isset($_SESSION['delMessage']) ? $_SESSION['delMessage'] :null; ?>
+            <?php echo getRecordInfo() ?>
 
             <label for="yes">Yes</label>
             <input type="radio" name="remove_record" id="yes" value="yes">
@@ -59,7 +60,7 @@ require_once 'delete_record_process.php';
             <label for="no">No</label>
             <input type="radio" name="remove_record" id="no" value="no">
 
-            <input type="submit" value="login">
+            <input type="submit" value="Delete">
 
          </fieldset>
 

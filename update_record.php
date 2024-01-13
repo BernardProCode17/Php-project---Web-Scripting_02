@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'variables.php';
+require_once 'get_record_info.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +22,7 @@ require_once 'variables.php';
       <p><?php echo 'PHP Site' ?></p>
       <nav>
          <ul>
-            <li><a href="index.php">Home</a></li>
+            <li><a href="table.php">Home</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="#">About</a></li>
          </ul>
@@ -33,27 +34,29 @@ require_once 'variables.php';
       <div>
          <?php
          if (isset($_SESSION['login_error'])) {
-            foreach($_SESSION['login_error'] as $error){
-               echo ''. $error .'';
+            foreach ($_SESSION['login_error'] as $error) {
+               echo '' . $error . '';
             }
-            // unset($_SESSION['login_error']);
-         }else{
-            // echo ''. $_SESSION['login_error'] .'';
-            // var_dump($_SESSION['login_error']);
          }
-         
          ?>
       </div>
 
-      <form action="login.php" method="post">
+      <form action="update_record_process.php" method="post">
+
+         <?php echo getRecordInfo() ?>
 
          <fieldset>
 
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username">
+            <legend>New Record Information</legend>
 
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password">
+            <label for="studentID">Student ID</label>
+            <input type="text" name="studentID" id="studentID">
+
+            <label for="firstname">First Name</label>
+            <input type="text" name="firstname" id="firstname">
+
+            <label for="lastname">Last Name</label>
+            <input type="text" name="lastname" id="lastname">
 
             <input type="submit" value="login">
 
