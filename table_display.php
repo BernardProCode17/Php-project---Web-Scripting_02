@@ -61,8 +61,8 @@ function tableDisplay()
       // $_SESSION['id']  = $row['id'];
       // var_dump($_SESSION['id']);
       //Links to delete and update
-      $HTML_OutPut .= "<td><a href='delete_record.php?id=" . $row[0] . "'>Delete</a></td>";
-      $HTML_OutPut .= "<td><a href='update_record.php?id=" . $row[0] . "'>Update</a></td>";
+      $HTML_OutPut .= "<td><a href='delete_record.php?id=" . $row[0] . "&firstname=" . $row[1] . "&lastname=" . $row[2] . "'>Delete</a></td>";
+      $HTML_OutPut .= "<td><a href='update_record.php?id=" . $row[0] . "&firstname=" . $row[1] . "&lastname=" . $row[2] . "'>Update</a></td>";
       $HTML_OutPut .= "<tr>";
    }
 

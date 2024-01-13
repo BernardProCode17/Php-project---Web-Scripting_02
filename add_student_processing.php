@@ -38,7 +38,7 @@ if (isset($_POST['student_id']) && isset($_POST['firstname']) && isset($_POST['l
     } else {
         $student_query = "INSERT INTO students (id, firstname, lastname) VALUES ('$student_id', '$firstname', '$lastname')";
         $student_sql->query($student_query);
-        $message = urlencode("Student added successfully: $id , $firstname, $lastname");
+        $message = urlencode("Student added successfully: $student_id , $firstname, $lastname");
         header("Location: table.php?message=$message");
     }
 } else {

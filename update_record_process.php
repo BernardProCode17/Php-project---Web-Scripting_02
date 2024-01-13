@@ -3,50 +3,40 @@ session_start();
 require_once 'dbinfo.php';
 
 $message = array();
-if (isset($_POST['studentID']) && isset($_POST['firstname']) && isset($_POST['lastname'])) {
+$studentID = $_SESSION['studentID'];
+var_dump($studentID);
+if (isset($_POST['student_id']) || isset($_POST['firstname']) || isset($_POST['lastname'])) {
 
-   if (!empty($_POST['studentID']) || !empty($_POST['firstname']) || !empty($_POST['lastname'])) { // Check if the radio button was clicked
+   if (!empty($_POST['student_id']) || !empty($_POST['firstname']) || !empty($_POST['lastname'])) {
 
-   }
-   // check if the post are set and then query the database to update it****************************************
+      $student_id = $_POST['student_id'];
+      $firstname = $_POST['firstname'];
+      $lastname = $_POST['lastname'];
 
-   // get the Student ID parameter from the getRecordInfo() //delete_record_process.php
-   if (isset($_SESSION['studentID'])) {
-      $student_id = $_SESSION['studentID'];
-   }
+      if ($studentID) {
 
-   if ($student_id) { // check if student ID has a value
+         //Open databse connection
+         $updateSQL = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-      //Store the radio button value
-      $delRecord = $_POST['remove_record'];
-      //Open databse connection
-      $delSQL = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-      try {
-         if ($delSQL->connect_error) {
-            throw new Exception("Error Processing Request", $delSQL->connect_error);
+         try {
+            if ($updateSQL->connect_error) {
+               throw new Exception("Error Processing Request", $updateSQL->connect_error);
+            }
+         } catch (Exception $e) {
+            "There was an unexpected error: " . " <br>" . $e->getMessage() . "<br> <br>" . " Please Return Later";
+            exit();
          }
-      } catch (Exception $e) {
-         "There was an unexpected error: " . " <br>" . $e->getMessage() . "<br> <br>" . " Please Return Later";
-         exit();
-      }
 
-      //Query preparation and execution // SQL Injection Protection
-      if ($delRecord === 'yes') {
-         $delQuery = $delSQL->prepare("DELETE FROM students WHERE id = ?");
-         $delQuery->bind_param("s", $student_id);
-         $delQuery->execute();
-
-         if ($delQuery->affected_rows > 0) { // Check if record was deleted
+         $updateQuery = $updateSQL->prepare("UPDATE students SET id= ?, firstname= ?, lastname= ? WHERE id= ?");
+         $updateQuery->bind_param("ssss", $student_id, $firstname, $lastname, $studentID);
+         $updateQuery->execute();
+         var_dump($updateQuery->get_result());
+         if ($updateQuery->affected_rows > 0) { // Check if record was deleted
             $message[] =  "<p>Student record with the ID:" . $student_id . " was deleted from the Database</p>"; // deleted message
          } else {
             $message[] = "<p>No Student Record was deleted</p>";
          }
-      } else { // Value: No Block
-         $message[] = "<p>No Student Record was deleted</p>";
       }
-   } else {
-      $message[] = "<p>No Student Record was Found</p>"; // No Student ID
    }
 } else {
    $message[] = "<p> Please select Yes or No</p>"; // No Radio Button was selected

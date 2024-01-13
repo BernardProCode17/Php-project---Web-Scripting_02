@@ -49,8 +49,8 @@ require_once 'get_record_info.php';
 
             <legend>New Record Information</legend>
 
-            <label for="studentID">Student ID</label>
-            <input type="text" name="studentID" id="studentID">
+            <label for="student_id">Student ID</label>
+            <input type="text" name="student_id" id="studentID">
 
             <label for="firstname">First Name</label>
             <input type="text" name="firstname" id="firstname">

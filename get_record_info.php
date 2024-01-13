@@ -1,19 +1,25 @@
 <?php
 require_once 'dbinfo.php';
 
-function getRecordInfo()
-{
+function getRecordInfo(){
 
     $studentID = '';
+    $firstname = '';
+    $lastname = '';
 
-    if (isset($_GET['id'])) { // Get the Student ID from the URL
+    if (isset($_GET['id']) && isset($_GET['firstname']) && $_GET['lastname']) { // Get the Student ID from the URL
 
-        if (!empty($_GET['id'])) { // Chech if the Student ID has a value
-            
+        if (!empty($_GET['id']) && !empty($_GET['fristname']) && !empty($_GET['lastname'])) { // Chech if the Student ID has a value
+
             //Store the ID and make connecting with the DataBase
             $delSQL = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
             $studentID = $delSQL->real_escape_string($_GET['id']);
+            $firstname = $delSQL->real_escape_string($_GET['firstname']);
+            $lastname = $delSQL->real_escape_string($_GET['lastname']);
+
             $_SESSION['studentID'] = $studentID;
+            $_SESSION['firstname'] = $firstname;
+            $_SESSION['lastname'] = $lastname;
 
             //Check for DataBase Error
             try {
