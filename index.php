@@ -33,15 +33,15 @@ require_once 'variables.php';
       <div>
          <?php
          if (isset($_SESSION['login_error'])) {
-            foreach($_SESSION['login_error'] as $error){
-               echo ''. $error .'';
+            foreach ($_SESSION['login_error'] as $error) {
+               echo '' . $error . '';
             }
             // unset($_SESSION['login_error']);
-         }else{
+         } else {
             // echo ''. $_SESSION['login_error'] .'';
             // var_dump($_SESSION['login_error']);
          }
-         
+
          ?>
       </div>
 
@@ -60,7 +60,8 @@ require_once 'variables.php';
          </fieldset>
 
       </form>
-
+      <p>Do you have an account?</p>
+      <a href="registerUser.php">Register Here</a>
    </main>
 
 </body>
