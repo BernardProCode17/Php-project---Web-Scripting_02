@@ -7,9 +7,9 @@ function getRecordInfo()
     $firstname = '';
     $lastname = '';
 
-    if (isset($_GET['id']) && isset($_GET['firstname']) && isset($_GET['lastname'])) { // Get the Student ID from the URL
+    if (isset($_GET['id']) || isset($_GET['firstname']) || isset($_GET['lastname'])) { // Get the Student ID from the URL
 
-        if (!empty($_GET['id']) && !empty($_GET['firstname']) && !empty($_GET['lastname'])) { // Check if the Student ID has a value
+        if (!empty($_GET['id']) || !empty($_GET['firstname']) || !empty($_GET['lastname'])) { // Check if the Student ID has a value
 
             //Store the ID and make connecting with the DataBase
             $SQL = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -66,9 +66,9 @@ function getRecordInfo()
                 return "<p>No Record found</p>";
             }
         } else {
-            return "<p>Record Not Found()</p>";
+            return "<p>Record Not Found</p>";
         }
     } else {
-        return "<p>Record Not Found{}</p>";
+        return "<p>Record Not Found</p>";
     }
 }
