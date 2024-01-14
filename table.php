@@ -1,11 +1,14 @@
 <?php
 session_start();
+if (!isset($_SESSION['username'])){
+   header('Cache-control: no-cache, must-revalidate, max-age=0');
+   header('Pragma: no-cache');
+   header('Expires: Thu, 01 Jan 1970 00:00:00 GMT');
+   header('Location: logout.php');
+}
 require_once 'variables.php';
 require_once 'table_display.php';
 
-// if(isset($_SESSION['message']) && !empty( $_SESSION['message'] )){
-//    $messages = $_SESSION['message'];
-// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +16,7 @@ require_once 'table_display.php';
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Assignment!</title>
+   <title>Home | Student Administraion Portal</title>
    <?php echo '<link rel="stylesheet" href="css/styles.css">' ?>
    <?php echo '<link rel="stylesheet" href="css/normalize_reset.css">' ?>
    <link rel="stylesheet" href="css/table.css">
@@ -39,6 +42,7 @@ require_once 'table_display.php';
 
       <section>
          <h2>Hello There, <?php echo $_SESSION['username'] ?></h2>
+         <p>Add a session timeout </p>
          <p>Welcome back to your admin dashboard</p>
       </section>
 

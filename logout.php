@@ -1,4 +1,8 @@
-<?php require_once 'variables.php'; ?>
+<?php 
+require_once 'variables.php'; 
+session_start();
+session_destroy();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
