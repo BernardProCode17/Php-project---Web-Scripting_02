@@ -1,57 +1,74 @@
 <?php
 require_once 'dbinfo.php';
-
-function getRecordInfo(){
+function getRecordInfo()
+{
 
     $studentID = '';
     $firstname = '';
     $lastname = '';
 
-    if (isset($_GET['id']) && isset($_GET['firstname']) && $_GET['lastname']) { // Get the Student ID from the URL
+    if (isset($_GET['id']) && isset($_GET['firstname']) && isset($_GET['lastname'])) { // Get the Student ID from the URL
 
-        if (!empty($_GET['id']) && !empty($_GET['fristname']) && !empty($_GET['lastname'])) { // Chech if the Student ID has a value
+        if (!empty($_GET['id']) && !empty($_GET['firstname']) && !empty($_GET['lastname'])) { // Check if the Student ID has a value
 
             //Store the ID and make connecting with the DataBase
-            $delSQL = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-            $studentID = $delSQL->real_escape_string($_GET['id']);
-            $firstname = $delSQL->real_escape_string($_GET['firstname']);
-            $lastname = $delSQL->real_escape_string($_GET['lastname']);
+            $SQL = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+            $studentID = $SQL->real_escape_string($_GET['id']);
+            $firstname = $SQL->real_escape_string($_GET['firstname']);
+            $lastname =  $SQL->real_escape_string($_GET['lastname']);
 
             $_SESSION['studentID'] = $studentID;
             $_SESSION['firstname'] = $firstname;
-            $_SESSION['lastname'] = $lastname;
+            $_SESSION['lastname'] =  $lastname;
 
             //Check for DataBase Error
             try {
-                if ($delSQL->connect_error) {
-                    throw new Exception("Error Processing Request", $delSQL->connect_error);
+                if ($SQL->connect_error) {
+                    throw new Exception("Error Processing Request", $SQL->connect_error);
                 }
             } catch (Exception $e) {
                 "There was an unexpected error: " . " <br>" . $e->getMessage() . "<br> <br>" . " Please Return Later";
                 exit();
             }
 
+
             //Record Query
-            $delQuery = "SELECT * FROM students WHERE id = '" . $studentID . "'";
+            $Query = $SQL->prepare("SELECT * FROM students WHERE id= ? AND firstname= ? AND lastname= ?");
+            $Query->bind_param("sss", $studentID, $firstname, $lastname);
+            $Query->execute();
+            $queryResults = $Query->get_result();
 
-            $delResults = $delSQL->query("$delQuery");
-
-            if ($delSQL->error) {
-                "" . $delSQL->error . "" . "";
+            if ($SQL->error) {
+                return "" . $SQL->error . "" . "";
             }
+            $_SESSION['studentID'] = $studentID;
+            $_SESSION['firstname'] = $firstname;
+            $_SESSION['lastname'] =  $lastname;
+
+            // var_dump($_SESSION['studentID']);
+            // var_dump($_SESSION['firstname']);
+            // var_dump($_SESSION['lastname']);
+
 
             // Record Result
-            if ($delResults->num_rows > 0) {
-                while ($recordRow = $delResults->fetch_assoc()) {
-                    $recordInfo = "ID:" . $recordRow['id'] . "<br>" . "First Name: " .  $recordRow['firstname'] . "<br>" .  "Last Name: " . $recordRow['lastname'];
+            if ($queryResults->num_rows > 0) {
+                while ($recordRow = $queryResults->fetch_assoc()) {
+                    $recordInfo = "ID: " . $recordRow['id'] . "<br>" . "First Name: " .  $recordRow['firstname'] . "<br>" .  "Last Name: " . $recordRow['lastname'];
+                    $_SESSION['RecordID'] = $recordRow['id'];
+                    $_SESSION['RecordFirstname'] = $recordRow['firstname'];
+                    $_SESSION['RecordLastname'] = $recordRow['lastname'];
                 }
+                $SQL->close();
                 return $recordInfo; //Record information display
+            } else {
+                $SQL->close();
+                return "<p>No Record found</p>";
             }
-            $delSQL->close();
         } else {
-            return "<p>Record Not Found</p>";
+            return "<p>Record Not Found()</p>";
         }
     } else {
-        return "<p>Record Not Found</p>";
+        return "<p>Record Not Found{}</p>";
     }
 }

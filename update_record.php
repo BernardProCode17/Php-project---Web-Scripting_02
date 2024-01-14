@@ -1,7 +1,14 @@
 <?php
 session_start();
+// <?php echo getRecordInfo() ?
 require_once 'variables.php';
 require_once 'get_record_info.php';
+getRecordInfo() ;
+
+$studentidVal = isset($_SESSION['studentID']) ? $_SESSION['studentID'] : 'null';
+$firstnameVal = isset($_SESSION['firstname']) ? $_SESSION['firstname'] : 'null';
+$lastnameVal  = isset($_SESSION['lastname'])  ? $_SESSION['lastname']  : 'null';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +39,7 @@ require_once 'get_record_info.php';
    <main>
 
       <div>
+      <a href="table.php">Back</a>
          <?php
          if (isset($_SESSION['login_error'])) {
             foreach ($_SESSION['login_error'] as $error) {
@@ -43,22 +51,21 @@ require_once 'get_record_info.php';
 
       <form action="update_record_process.php" method="post">
 
-         <?php echo getRecordInfo() ?>
 
          <fieldset>
 
             <legend>New Record Information</legend>
 
             <label for="student_id">Student ID</label>
-            <input type="text" name="student_id" id="studentID">
+            <input type="text" name="student_id" id="student_id" value="<?php echo $studentidVal ?>">
 
             <label for="firstname">First Name</label>
-            <input type="text" name="firstname" id="firstname">
+            <input type="text" name="firstname" id="firstname" value="<?php echo $firstnameVal ?>">
 
             <label for="lastname">Last Name</label>
-            <input type="text" name="lastname" id="lastname">
+            <input type="text" name="lastname" id="lastname" value="<?php echo $lastnameVal ?>">
 
-            <input type="submit" value="login">
+            <input type="submit" value="Update">
 
          </fieldset>
 

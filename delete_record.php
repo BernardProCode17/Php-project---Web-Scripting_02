@@ -32,19 +32,18 @@ require_once 'get_record_info.php';
    <main>
 
       <div>
+      <a href="table.php">Back</a>
          <?php
          if (isset($_SESSION['login_error'])) {
             foreach ($_SESSION['login_error'] as $error) {
                echo '' . $error . '';
             }
-            // unset($_SESSION['login_error']);
-         } else {
-            // echo ''. $_SESSION['login_error'] .'';
-            // var_dump($_SESSION['login_error']);
          }
 
          ?>
       </div>
+      
+      <?php echo getRecordInfo() ?>
 
       <form action="delete_record_process.php" method="post">
 
@@ -52,7 +51,6 @@ require_once 'get_record_info.php';
             <h3>Are you sure you want to remove this record </h3>
 
             <?php echo isset($_SESSION['delMessage']) ? $_SESSION['delMessage'] :null; ?>
-            <?php echo getRecordInfo() ?>
 
             <label for="yes">Yes</label>
             <input type="radio" name="remove_record" id="yes" value="yes">

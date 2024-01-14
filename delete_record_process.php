@@ -33,7 +33,7 @@ if (isset($_POST['remove_record']) && !empty($_POST['remove_record'])) { // Chek
          $delQuery->execute();
 
          if ($delQuery->affected_rows > 0) { // Check if record was deleted
-            $message[] =  "<p>Student record with the ID:" . $student_id . " was deleted from the Database</p>"; // deleted message
+            $message[] =  "<p>Student record with <br>ID:" . $student_id . "<br> was deleted from the Database</p>"; // deleted message
          } else {
             $message[] = "<p>No Student Record was deleted</p>"; 
          }

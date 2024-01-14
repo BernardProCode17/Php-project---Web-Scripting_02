@@ -31,11 +31,16 @@ require_once 'variables.php';
       <section>
          <h2>Add Student</h2>
          <a href="table.php">Back</a>
+
          <?php
-         if (isset($_GET['message'])) {
-            echo "<p>" . $_GET['message'] . "</p>";
+         if (isset($_SESSION['message'])) {
+            foreach ($_SESSION['message'] as $message) {
+               echo '' . $message . '';
+            }
+            unset($_SESSION['message']);
          }
          ?>
+
       </section>
       <form action="add_student_processing.php" method="post">
 

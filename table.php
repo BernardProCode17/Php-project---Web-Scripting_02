@@ -2,6 +2,10 @@
 session_start();
 require_once 'variables.php';
 require_once 'table_display.php';
+
+// if(isset($_SESSION['message']) && !empty( $_SESSION['message'] )){
+//    $messages = $_SESSION['message'];
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,21 +42,17 @@ require_once 'table_display.php';
 
       <section>
 
-         <?php
-         if (isset($_GET['message'])) {
-            echo "<p>" . $_GET['message'] . "</p>";
-         }
-
-         if (isset($_SESSION['delMessage'])) {
-            echo $_SESSION['delMessage'];
-            unset($_SESSION['delMessage']);
-                    } else {
-            echo null;
+         <?php 
+         if(isset($_SESSION['message'])){
+            foreach ($_SESSION['message'] as $message) {
+               echo ''. $message .'';
+            }
+            unset($_SESSION['message']);
          }
          ?>
+     
 
          <a href="add_student.php">Add New Student</a>
-         <p><b>Add display message on the pages, and the logout functionality with no redirect back to the previous page, make a session timeout, as well a register user functionality</b></p>
          <?php echo tableDisplay() ?>
       </section>
 
