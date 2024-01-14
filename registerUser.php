@@ -25,17 +25,19 @@ require_once 'variables.php';
    <main>
 
       <div>
-         <?php
-         if (isset($_SESSION['login_error'])) {
-            foreach ($_SESSION['login_error'] as $error) {
-               echo '' . $error . '';
-            }
-         }
+        <?php 
+        
+        if (isset($_GET['msg'])){
+         $msg = urldecode($_GET['msg']);
+         // $msg = html_entity_decode($msg);
+         echo''. $msg .'';
+        }
 
-         ?>
+        ?>
+
       </div>
 
-      <form action="login.php" method="post">
+      <form action="registerUser_processing.php" method="post" autocomplete="off">
 
          <fieldset>
 
@@ -50,6 +52,8 @@ require_once 'variables.php';
          </fieldset>
 
       </form>
+
+<a href="index.php">Login</a>
 
    </main>
 

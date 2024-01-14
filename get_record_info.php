@@ -53,7 +53,7 @@ function getRecordInfo()
             // Record Result
             if ($queryResults->num_rows > 0) {
                 while ($recordRow = $queryResults->fetch_assoc()) {
-                    $recordInfo = "ID: " . $recordRow['id'] . "<br>" . "First Name: " .  $recordRow['firstname'] . "<br>" .  "Last Name: " . $recordRow['lastname'];
+                    $recordInfo = "<p class='recordinfo'><span>ID: " . $recordRow['id'] . "</span>" . "<span>First Name: " .  $recordRow['firstname'] . "</span>" .  "<span>Last Name: " . $recordRow['lastname'] ."</span></p>";
                     $_SESSION['RecordID'] = $recordRow['id'];
                     $_SESSION['RecordFirstname'] = $recordRow['firstname'];
                     $_SESSION['RecordLastname'] = $recordRow['lastname'];

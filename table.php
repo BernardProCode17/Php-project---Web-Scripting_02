@@ -8,6 +8,8 @@ if (!isset($_SESSION['username'])){
 }
 require_once 'variables.php';
 require_once 'table_display.php';
+require_once 'timeout.php';
+timeout();
 
 ?>
 <!DOCTYPE html>
@@ -42,7 +44,6 @@ require_once 'table_display.php';
 
       <section>
          <h2>Hello There, <?php echo $_SESSION['username'] ?></h2>
-         <p>Add a session timeout </p>
          <p>Welcome back to your admin dashboard</p>
       </section>
 

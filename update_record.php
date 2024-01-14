@@ -8,6 +8,8 @@ if (!isset($_SESSION['username'])){
 }
 require_once 'variables.php';
 require_once 'get_record_info.php';
+require_once 'timeout.php';
+timeout();
 
 if(isset($_GET['from']) && $_GET['from'] == 'table'){
    getRecordInfo() ;
@@ -21,7 +23,6 @@ if(isset($_GET['from']) && $_GET['from'] == 'table'){
    $lastnameVal  = null;
 } 
 
-if (isset($_GET['$studentID']))
 
 ?>
 <!DOCTYPE html>
@@ -56,13 +57,6 @@ if (isset($_GET['$studentID']))
  <p>Fix the error from the direct when user try to update a record</p>
       <div>
       <a href="table.php">Back</a>
-         <?php
-         if (isset($_SESSION['login_error'])) {
-            foreach ($_SESSION['login_error'] as $error) {
-               echo '' . $error . '';
-            }
-         }
-         ?>
       </div>
 
       <form action="update_record_process.php" method="post">

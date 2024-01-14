@@ -2,7 +2,7 @@
 //imports
 session_start();
 require_once("dbinfo.php");
-require_once("databasefile.php");
+// require_once("databasefile.php");
 
 // Variables
 $login_error = array();
@@ -61,6 +61,7 @@ if (!is_array($login_error)) {
 
 $_SESSION['login_error'] = $login_error;
 $_SESSION['username'] = ucfirst($username);
+$_SESSION['timeout'] = time();
 
 header("Location: table.php");
 exit();

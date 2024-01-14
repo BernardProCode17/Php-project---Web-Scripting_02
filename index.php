@@ -8,7 +8,7 @@ require_once 'variables.php';
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Assignment!</title>
+   <title>Home | Student Administraion Portal</title>
    <?php echo '<link rel="stylesheet" href="css/styles.css">' ?>
    <?php echo '<link rel="stylesheet" href="css/normalize_reset.css">' ?>
 
@@ -18,7 +18,7 @@ require_once 'variables.php';
 
    <header>
       <h1><?php echo FIRSTNAME . ' ' . LASTNAME ?></h1>
-      <p><?php echo 'PHP Site' ?></p>
+      <p><?php echo 'Student Administraion Portal' ?></p>
       <!-- <nav>
          <ul>
             <li><a href="index.php">Home</a></li>

@@ -7,6 +7,8 @@ if (!isset($_SESSION['username'])){
    header('Location: logout.php');
 }
 require_once 'variables.php';
+require_once 'timeout.php';
+timeout();
 ?>
 <!DOCTYPE html>
 <html lang="en">
