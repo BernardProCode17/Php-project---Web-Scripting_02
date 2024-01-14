@@ -46,9 +46,8 @@ function getRecordInfo()
             $_SESSION['firstname'] = $firstname;
             $_SESSION['lastname'] =  $lastname;
 
-            // var_dump($_SESSION['studentID']);
-            // var_dump($_SESSION['firstname']);
-            // var_dump($_SESSION['lastname']);
+
+
 
 
             // Record Result

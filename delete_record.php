@@ -19,12 +19,14 @@ require_once 'get_record_info.php';
 
    <header>
       <h1><?php echo FIRSTNAME . ' ' . LASTNAME ?></h1>
-      <p><?php echo 'PHP Site' ?></p>
+      <p><?php echo 'Student Administraion Portal' ?></p>
       <nav>
          <ul>
             <li><a href="table.php">Home</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="add_student.php">Add Student</a></li>
+            <li><a href="update_record.php">Update</a></li>
+            <li><a href="delete_record.php">Remove</a></li>
+            <li><a href="logout.php">Log Out</a></li>
          </ul>
       </nav>
    </header>
