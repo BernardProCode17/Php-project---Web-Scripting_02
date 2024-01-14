@@ -3,7 +3,7 @@
 
 function timeout(){
 
-   $timeout_dureation = 10;
+   $timeout_dureation = 1800;
    $timeout_message = '';
    
    if (isset($_SESSION['timeout'])){
