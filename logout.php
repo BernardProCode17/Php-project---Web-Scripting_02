@@ -12,7 +12,7 @@ session_destroy();
    <title>Logout | Student Administraion Portal</title>
    <?php echo '<link rel="stylesheet" href="css/styles.css">' ?>
    <?php echo '<link rel="stylesheet" href="css/normalize_reset.css">' ?>
-
+   <link rel="stylesheet" href="css/project_style.css">
 </head>
 
 <body>
@@ -34,7 +34,7 @@ session_destroy();
       ?>
    </div>
 
-      <a href="index.php">Login</a>
+      <a href="index.php" class='link'>Login</a>
 
    </main>
 

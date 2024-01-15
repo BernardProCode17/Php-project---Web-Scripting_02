@@ -16,21 +16,22 @@ timeout();
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Add Student | Student Administraion Portal</title>
+   <title>Add Student | Student Administration Portal</title>
    <?php echo '<link rel="stylesheet" href="css/styles.css">' ?>
    <?php echo '<link rel="stylesheet" href="css/normalize_reset.css">' ?>
+   <link rel="stylesheet" href="css/project_style.css">
 </head>
 
 <body>
 
    <header>
       <h1><?php echo FIRSTNAME . ' ' . LASTNAME ?></h1>
-      <p><?php echo 'Student Administraion Portal' ?></p>
+      <p><?php echo 'Student Administration Portal' ?></p>
       <nav>
          <ul>
             <li><a href="table.php">Home</a></li>
             <li><a href="add_student.php">Add Student</a></li>
-            <li><a href="update_record.php">Update</a></li>
+            <!-- <li><a href="update_record.php">Update</a></li> -->
             <!-- <li><a href="delete_record.php">Remove</a></li> -->
             <li><a href="logout.php">Log Out</a></li>
          </ul>
@@ -40,7 +41,7 @@ timeout();
    <main>
       <section>
          <h2>Add Student</h2>
-         <a href="table.php">Back</a>
+         <a href="table.php" class="link">Back</a>
 
          <?php
          if (isset($_SESSION['message'])) {

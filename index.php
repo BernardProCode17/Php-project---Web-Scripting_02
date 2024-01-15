@@ -8,17 +8,17 @@ require_once 'variables.php';
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Home | Student Administraion Portal</title>
+   <title>Home | Student Administration Portal</title>
    <?php echo '<link rel="stylesheet" href="css/styles.css">' ?>
    <?php echo '<link rel="stylesheet" href="css/normalize_reset.css">' ?>
-
+   <link rel="stylesheet" href="css/project_style.css">
 </head>
 
 <body>
 
    <header>
       <h1><?php echo FIRSTNAME . ' ' . LASTNAME ?></h1>
-      <p><?php echo 'Student Administraion Portal' ?></p>
+      <p><?php echo 'Student Administration Portal' ?></p>
       <!-- <nav>
          <ul>
             <li><a href="index.php">Home</a></li>
@@ -36,12 +36,7 @@ require_once 'variables.php';
             foreach ($_SESSION['login_error'] as $error) {
                echo '' . $error . '';
             }
-            // unset($_SESSION['login_error']);
-         } else {
-            // echo ''. $_SESSION['login_error'] .'';
-            // var_dump($_SESSION['login_error']);
          }
-
          ?>
       </div>
 
@@ -60,8 +55,8 @@ require_once 'variables.php';
          </fieldset>
 
       </form>
-      <p>Do you have an account?</p>
-      <a href="registerUser.php">Register Here</a>
+      <p class='account'>Do you have an account?</p>
+      <a href="registerUser.php" class="account-link">Register Here</a>
    </main>
 
 </body>

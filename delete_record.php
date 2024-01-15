@@ -9,7 +9,7 @@
    require_once 'variables.php';
    require_once 'get_record_info.php';
    require_once 'timeout.php';
-timeout();
+   timeout();
    ?>
    <!DOCTYPE html>
    <html lang="en">
@@ -17,10 +17,10 @@ timeout();
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Remove | Student Administraion Portal</title>
+      <title>Remove | Student Administration Portal</title>
       <?php echo '<link rel="stylesheet" href="css/styles.css">' ?>
       <?php echo '<link rel="stylesheet" href="css/normalize_reset.css">' ?>
-      <link rel="stylesheet" href="css/table.css">
+      <link rel="stylesheet" href="css/project_style.css">
 
    </head>
 
@@ -28,13 +28,13 @@ timeout();
 
       <header>
          <h1><?php echo FIRSTNAME . ' ' . LASTNAME ?></h1>
-         <p><?php echo 'Student Administraion Portal' ?></p>
-         <nav>    
+         <p><?php echo 'Student Administration Portal' ?></p>
+         <nav>
             <ul>
                <li><a href="table.php">Home</a></li>
                <li><a href="add_student.php">Add Student</a></li>
-               <li><a href="update_record.php">Update</a></li>
-               <li><a href="delete_record.php">Remove</a></li>
+               <!-- <li><a href="update_record.php">Update</a></li>
+               <li><a href="delete_record.php">Remove</a></li> -->
                <li><a href="logout.php">Log Out</a></li>
             </ul>
          </nav>
@@ -43,7 +43,7 @@ timeout();
       <main>
 
          <div>
-            <a href="table.php">Back</a>
+            <a href="table.php" class="link">Back</a>
          </div>
 
          <?php echo getRecordInfo() ?>

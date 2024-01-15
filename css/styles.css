@@ -7,20 +7,19 @@ body {
 
 header {
   background-color: rgb(0, 0, 255);
-  width: 100%;
+  width: 95%;
   padding: 1rem;
-  margin: 0rem auto;
+  margin: 1rem auto;
   color: #fff;
-  border-bottom-left-radius: 0.3125rem;
-  border-bottom-right-radius: 0.3125rem;
+  border-radius: 5px;
 
   & h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     text-align: center;
   }
 
   & p {
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
   }
 
@@ -40,15 +39,33 @@ header {
         text-decoration: none;
         color: rgb(0, 0, 255);
       }
+
+      & a:visited {
+        text-decoration: none;
+        color: rgb(0, 0, 255);
+
+      }
+
+      & a:active {
+        color: rgb(197, 197, 235);
+
+      }
+
+      & a:hover {
+        color: rgb(197, 197, 235);
+        text-decoration: underline;
+
+      }
     }
   }
 }
 
 main {
   background-color: rgb(255, 255, 255);
-  margin: 1rem;
+  margin: 1rem auto;
   padding: 3rem;
   border-radius: 0.3125rem;
+  width: 95%;
 }
 
 
@@ -131,20 +148,23 @@ main {
 
 form {
   background-color: #8080805c;
-  padding: 2rem;
+  padding: 1rem;
   width: 100%;
-  margin: 3rem auto;
+  margin: 0rem auto;
   border-radius: 0.3125rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  gap: 0.3rem;
+  /* gap: 5px; */
 
   & fieldset {
     display: flex;
     flex-direction: column;
+    border-radius: 0.3125rem;
+    width: 100%;
   }
+
   & .form-h2 {
     font-size: 1.5rem;
   }
@@ -156,14 +176,30 @@ form {
   }
 
   & input {
-    width: 8.125rem;
+    width: 100%;
     margin: 0.5rem auto;
-    height: 1.5625rem;
-    border-radius: 0.1875rem;
-    border: 0.0313rem solid #0000ff80;
+    border-radius: 5px;
+    border: 0.0938rem solid #0000ff80;
     background-color: rgb(255, 255, 255);
     cursor: text;
   }
+
+  & input[type='submit'] {
+    width: max-content;
+
+  }
+
+  & input[type='submit']:hover {
+    background-color: rgba(245, 245, 245, 0.73);
+
+  }
+
+  /* @media(min-width: 400px) {
+
+    form input {
+      max-width: 50px;
+    }
+  } */
 
   & button {
     width: 5rem;
@@ -176,10 +212,17 @@ form {
   }
 }
 
-@media(min-width: 31.25rem) {
+@media(min-width: 500px) {
 
-  form input {
-    width: 15.625rem;
+  form,
+  fieldset {
+    max-width: 400px;
+  }
+}
+
+@media(min-width: 700px) {
+  main {
+    max-width: 35rem;
   }
 }
 
@@ -208,23 +251,23 @@ form {
   }
 }
 
-@media(min-width: 43.75rem) {
 
-  .input-value {
-    width: 30%;
-  }
-}
+
 
 footer {
-  background-color: rgba(144, 238, 144, 0.507);
+  background-color: blue;
+  width: 100%;
 
-   & h3 {
-    font-size: 1.6875rem;
-    font-weight: 300;
-   }
+  & h3 {
+    font-size: 27px;
+    font-weight: 700;
+    color: #fff;
+  }
+
   & .footer-tags {
     display: flex;
     justify-content: center;
     gap: 1rem;
+    color: #fff;
   }
 }

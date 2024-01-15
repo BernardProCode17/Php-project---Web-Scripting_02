@@ -31,9 +31,10 @@ if(isset($_GET['from']) && $_GET['from'] == 'table'){
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Update | Student Administraion Portal</title>
+   <title>Update | Student Administration Portal</title>
    <?php echo '<link rel="stylesheet" href="css/styles.css">' ?>
    <?php echo '<link rel="stylesheet" href="css/normalize_reset.css">' ?>
+   <link rel="stylesheet" href="css/project_style.css">
 
 </head>
 
@@ -41,12 +42,12 @@ if(isset($_GET['from']) && $_GET['from'] == 'table'){
 
    <header>
       <h1><?php echo FIRSTNAME . ' ' . LASTNAME ?></h1>
-      <p><?php echo 'Student Administraion Portal' ?></p>
+      <p><?php echo 'Student Administration Portal' ?></p>
       <nav>
          <ul>
             <li><a href="table.php">Home</a></li>
             <li><a href="add_student.php">Add Student</a></li>
-            <li><a href="update_record.php">Update</a></li>
+            <!-- <li><a href="update_record.php">Update</a></li> -->
             <!-- <li><a href="delete_record.php">Remove</a></li> -->
             <li><a href="logout.php">Log Out</a></li>
          </ul>
@@ -54,9 +55,9 @@ if(isset($_GET['from']) && $_GET['from'] == 'table'){
    </header>
 
    <main>
- <p>Fix the error from the direct when user try to update a record</p>
+
       <div>
-      <a href="table.php">Back</a>
+      <a href="table.php" class="link">Back</a>
       </div>
 
       <form action="update_record_process.php" method="post">
