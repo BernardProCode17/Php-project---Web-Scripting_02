@@ -18,7 +18,7 @@ if (isset($_POST['register-username']) && isset($_POST['register-password'])) {
       }
       //  username= ? AND , $Registered_userName
       //Check if user has already been registered
-      $register_SQL = $SQL->prepare("SELECT primary_key FROM users WHERE username = ? AND password = ?");
+      $register_SQL = $SQL->prepare("SELECT * FROM user WHERE username = ? AND password = ?");
       $register_SQL->bind_param("ss", $Registered_userName, $Registered_password);
       $register_SQL->execute();
       $SQL_Results = $register_SQL->get_result();
@@ -39,7 +39,7 @@ if (isset($_POST['register-username']) && isset($_POST['register-password'])) {
          //Add new user to the database
          try {
 
-            $register_SQL = $SQL->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+            $register_SQL = $SQL->prepare("INSERT INTO user (username, password) VALUES (?, ?)");
             $register_SQL->bind_param("ss", $Registered_userName, $Registered_password);
             $register_SQL->execute();
             $registaration_message[] = "<p class='registerMessage'> Your username and password has been registered</p>";

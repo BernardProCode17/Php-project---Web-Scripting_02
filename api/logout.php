@@ -10,9 +10,9 @@ session_destroy();
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Logout | Student Administraion Portal</title>
-   <?php echo '<link rel="stylesheet" href="css/styles.css">' ?>
-   <?php echo '<link rel="stylesheet" href="css/normalize_reset.css">' ?>
-   <link rel="stylesheet" href="css/project_style.css">
+   <?php echo '<link rel="stylesheet" href="../css/styles.css">' ?>
+   <?php echo '<link rel="stylesheet" href="../css/normalize_reset.css">' ?>
+   <link rel="stylesheet" href="../css/project_style.css">
 </head>
 
 <body>
